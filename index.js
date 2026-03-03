@@ -3,8 +3,10 @@ import axios from "axios";
 import FormData from "form-data";
 import multer from "multer";
 import serverless from "serverless-http"; 
+import cors from "cors";
 
 const app = express();
+app.use(cors());
 const upload = multer();
 
 const API1 = "https://lioninthestreets-fundusimagegate.hf.space/check";
