@@ -1,0 +1,52 @@
+import express from "express";
+import axios from "axios";
+import FormData from "form-data";
+import multer from "multer";
+
+const app = express();
+const upload = multer();
+
+const API1 = "https://lioninthestreets-fundusimagegate.hf.space/check";
+const API2 = "https://lioninthestreets-maxvitgradcam.hf.space/predict";
+
+app.post("/image", upload.single("file"), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400);
+    }
+    const form = new FormData();
+    form.append("file", req.file.buffer, req.file.originalname);
+    const response1 = await axios.post(API1, form, {
+      headers: form.getHeaders(),
+    });
+    console.log("API1:", response1.data);
+    const status1 = response1.data.status?.toString().toLowerCase();
+    if (status1 ==="reject") {
+      return res.json({
+        result: response1.data
+      });
+    }
+    const form2 = new FormData();
+    form2.append("file", req.file.buffer, req.file.originalname);
+    const response2 = await axios.post(API2, form2, {
+      headers: form2.getHeaders(),
+    });
+    console.log("API2:", response2.data);
+    return res.json({
+      result: response2.data,
+    });
+  } catch (e) {
+    console.error(e);
+    return res.status(500);
+  }
+});
+
+
+
+export const handler = serverless(app);
+
+
+
+// app.listen(3000, () => {
+//   console.log("Server running on port 3000");
+// });
