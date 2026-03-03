@@ -44,7 +44,8 @@ app.post("/image", upload.single("file"), async (req, res) => {
 
 
 
-export const handler = serverless(app);
+const port = process.env.PORT || 3000;
+app.listen(port, () => console.log("Running on", port));
 
 
 
