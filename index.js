@@ -2,6 +2,7 @@ import express from "express";
 import axios from "axios";
 import FormData from "form-data";
 import multer from "multer";
+import serverless from "serverless-http"; 
 
 const app = express();
 const upload = multer();
