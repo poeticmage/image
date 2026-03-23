@@ -1,16 +1,16 @@
 # Fundus Image Processing API
 
-# Overview https://funduseyefrontend12.onrender.com/
-# This API accepts a fundus image, validates it using one external service, and if accepted, sends it to another service for prediction. | Node.js Express Axios FormData CORS
+## Overview https://funduseyefrontend12.onrender.com/
+## This API accepts a fundus image, validates it using one external service, and if accepted, sends it to another service for prediction. | Node.js Express Axios FormData CORS
 
-# Client uploads an image
-# Image is sent to API1 for validation
-# If rejected, response is returned immediately
-# If accepted, image is sent to API2
-# Final prediction is returned
+### Client uploads an image
+### Image is sent to API1 for validation
+### If rejected, response is returned immediately
+### If accepted, image is sent to API2
+### Final prediction is returned
 
-# API1: Checks whether the image is a Fundus image at all based on an ML application on DBSCAN clustering https://lioninthestreets-fundusimagegate.hf.space/check
-# API2: Studies the image, extracts information, matches with the trained weights of a Light MaxViT based algorithm. https://lioninthestreets-maxvitgradcam.hf.space/predict
+## API1: Checks whether the image is a Fundus image at all based on an ML application on DBSCAN clustering https://lioninthestreets-fundusimagegate.hf.space/check
+## API2: Studies the image, extracts information, matches with the trained weights of a Light MaxViT based algorithm. https://lioninthestreets-maxvitgradcam.hf.space/predict
 ```
 import express from "express";
 import axios from "axios";
