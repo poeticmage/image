@@ -7,7 +7,6 @@ import cors from "cors";
 
 const app = express();
 app.use(cors());
-app.options("*", cors());
 const upload = multer();
 
 const API1 = "https://lioninthestreets-fundusimagegate.hf.space/check";
